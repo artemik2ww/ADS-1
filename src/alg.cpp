@@ -4,50 +4,50 @@
 
 
 bool checkPrime(uint64_t value) {
-  if (value < 2){
-    return false;
-  }
-  for (uint64_t i = 2; i <= value;i++){
-    if (value % i == 0){
-      return false;
+    if (value < 2) {
+        return false;
     }
-  }
-  return true;
+    for (uint64_t i = 2; i <= value; i++) {
+        if (value % i == 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 uint64_t nPrime(uint64_t n) {
-  uint64_t k = 0;
-  if (n == 0){
-    return 0;
-  }
-  for (uint64_t i = 2 ; ; i++){
-    if (checkPrime(i)){
-      k++;
-      if (k == n){
-        return i;
-      }
+    uint64_t k = 0;
+    uint64_t ch = 0;
+    if (n == 0) {
+        return 0;
     }
-  }
+    while (k < ch) {
+        ch++;
+        if (checkPrime(ch)) {
+            k++;
+        }
+    }
+    return ch;
 }
 
 uint64_t nextPrime(uint64_t value) {
-  uint64_t cled = value + 1;
-  while (true){
-    if (checkPrime(cled)){
-      return cled;
+    uint64_t cled = value + 1;
+    while (true) {
+        if (checkPrime(cled)) {
+            return cled;
+        }
+        cled++;
     }
-    cled++;
-  }
 }
 
 uint64_t sumPrime(uint64_t hbound) {
-  uint64_t k = 0;
-  for (uint64_t i = 2; i < hbound; i++){
-    if (checkPrime(i)){
-      k+=i;
+    uint64_t k = 0;
+    for (uint64_t i = 2; i < hbound; i++) {
+        if (checkPrime(i)) {
+            k += i;
+        }
     }
-  }
-  return k;
+    return k;
 }
 
 uint64_t twinPrimes(uint64_t lbound, uint64_t hbound) {
